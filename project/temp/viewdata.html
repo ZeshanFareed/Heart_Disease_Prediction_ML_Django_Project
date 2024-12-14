@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body, html {
+            height: 100%;
+            width: 100%; /* Ensure full width */
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-image: url('https://cdn.pixabay.com/photo/2024/04/18/10/09/ai-generated-8704008_1280.jpg');
+            background-size: cover; /* Ensures the background image covers the entire viewport */
+            background-position: center; /* Centers the background image */
+            background-repeat: no-repeat; /* Prevents repeating the image */
+        }
+        
+
+        .result-container {
+            background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+            backdrop-filter: blur(15px); /* Apply blur effect */
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(250, 249, 249, 0.3); /* White shadow for contrast */
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+        
+
+        .result-heading {
+            font-size: 2rem;
+            color: #ffffff;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .message-image-border {
+            border: 2px solid #ced4da;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .result-message {
+            font-size: 1.5rem;
+            color: #f2f5f9;
+            margin-bottom: 20px;
+        }
+
+        .result-image {
+            max-width: 80%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+
+        .back-link {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background-color: #0d00ff;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+
+        .back-link:hover {
+            background-color: red;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h1 class="result-heading">{{ message }}</h1>
+    
+        <div class="message-image-border">
+            <p class="result-message">{{ prediction }}</p>
+           
+            {% if prediction == 0 %}
+                <img src="https://t3.ftcdn.net/jpg/08/45/41/94/360_F_845419483_7VWsdIADOMpahPVeTNi42kj8OEXg1yfG.jpg" class="result-image" alt="Healthy Heart">
+            {% else %}
+                <img src="https://www.nih.gov/sites/default/files/news-events/research-matters/2024/20240402-heart-damage.jpg" class="result-image" alt="Damage Heart">
+            {% endif %}
+        </div>
+      
+        <a href="{% url 'user' %}" class="back-link">Go Back to the Form</a>
+    </div>
+</body>
+</html>
